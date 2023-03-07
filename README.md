@@ -11,7 +11,7 @@ Depdencies:
 
   * [OpenAI GPT-3 API](https://beta.openai.com/docs/api-reference/introduction)
   * [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/)
-  * [SpeechRecognition](ttps://github.com/Uberi/speech_recognition)
+  * [SpeechRecognition](https://github.com/Uberi/speech_recognition)
   * [openai/whisper](https://github.com/openai/whisper)
 
 ## Usage
