@@ -2,8 +2,15 @@ import speech_recognition as sr
 import os
 import openai
 import subprocess
+import argparse
 
-def talk():
+
+LANGUAGES = {
+    "en": "english",
+    "zh-hans": "chinese"
+}
+
+def talk(language):
     print("Listening...")
     r = sr.Recognizer()
     mic = sr.Microphone()
@@ -11,11 +18,11 @@ def talk():
         r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
         print(audio)
-        transcript = r.recognize_whisper(audio, language="english")
+        transcript = r.recognize_whisper(audio, language=language)
         print(transcript)
         return transcript
 
-def send_request(words):
+def send_request(language, words):
     openai.api_key = os.getenv("OPENAI_API_KEY")
     completion = openai.ChatCompletion.create(
       model="gpt-3.5-turbo",
@@ -23,10 +30,27 @@ def send_request(words):
         {"role": "user", "content": words}
       ]
     )
-    print(completion.choices[0].message)
-    cmd_str = "say \"" + completion.choices[0].message["content"].replace("\n", " ") + "\""
+    answer = completion.choices[0].message["content"]
+    print(answer)
+    voice = ""
+    if language == "chinese":
+        voice = "--voice Tingting"
+    cmd_str = "say " + voice +  " \"" + answer.replace("\n", " ") + "\""
     subprocess.call(cmd_str, shell=True)
 
-while True:
-    input_words = talk()
-    send_request(input_words)
+if __name__ == "__main__":
+  parser = argparse.ArgumentParser()
+  parser.add_argument(
+        "--language",
+        type=str,
+        choices=sorted(LANGUAGES.keys()),
+        default="en",
+        metavar="LANGUAGE",
+        help="language to talk, available: {%(choices)s}",
+  )
+  options = parser.parse_args()
+  language = LANGUAGES[options.language]
+  print(language)
+  while True:
+      input_words = talk(language)
+      send_request(language, input_words)
