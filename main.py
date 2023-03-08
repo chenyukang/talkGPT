@@ -11,7 +11,7 @@ LANGUAGES = {
 }
 
 def talk(language):
-    print("Listening...")
+    print("\n\nListening...")
     r = sr.Recognizer()
     mic = sr.Microphone()
     with mic as source:
@@ -25,7 +25,7 @@ def talk(language):
 def send_request(language, words):
     openai.api_key = os.getenv("OPENAI_API_KEY")
     completion = openai.ChatCompletion.create(
-      model="gpt-3.5-turbo",
+      model="gpt-3.5-turbo-0301",
       messages=[
         {"role": "user", "content": words}
       ]
