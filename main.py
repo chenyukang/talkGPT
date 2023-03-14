@@ -10,7 +10,7 @@ LANGUAGES = {
   "zh-hans": "chinese"
 }
 
-def talk(language: str) -> str:
+def transcribe_speech(language: str) -> str:
   
     print("\n\nListening...")
     
@@ -70,5 +70,5 @@ if __name__ == "__main__":
     print(language)
 
     while True:
-        input_words = talk(language)
+        input_words = transcribe_speech(language)
         send_request(language, input_words)
