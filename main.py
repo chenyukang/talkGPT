@@ -10,7 +10,7 @@ LANGUAGES = {
   "zh-hans": "chinese"
 }
 
-def talk(language):
+def talk(language: str) -> str:
   
     print("\n\nListening...")
     
@@ -29,7 +29,7 @@ def talk(language):
         return transcript
 
 
-def send_request(language, words):
+def send_request(language: str, words: str) -> None:
     
     openai.api_key = os.getenv("OPENAI_API_KEY")
     
