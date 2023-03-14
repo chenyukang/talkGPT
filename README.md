@@ -1,25 +1,26 @@
 # talkGPT
 
-
 ## Installation
 
 ```bash
+chmod +x ./install.sh
 ./install.sh
 ```
 
-Depdencies:
+## Dependentcies
 
-  * [OpenAI GPT-3 API](https://beta.openai.com/docs/api-reference/introduction)
-  * [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/)
-  * [SpeechRecognition](https://github.com/Uberi/speech_recognition)
-  * [openai/whisper](https://github.com/openai/whisper)
+* [OpenAI API wrapper](https://beta.openai.com/docs/api-reference/introduction)
+* [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/)
+* [SpeechRecognition](https://github.com/Uberi/speech_recognition)
+* [openai-whisper](https://github.com/openai/whisper)
 
-## Usage
+## How to use
 
-```bash
+```sh
 export OPENAI_API_KEY=xxxxxxxxx
 python main.py
 ```
 
-# License
-    MIT License
+## License
+
+* MIT License
