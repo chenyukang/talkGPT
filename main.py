@@ -45,6 +45,20 @@ def transcribe_speech(language: str) -> str:
 
 def send_request(language: str, words: str) -> None:
     
+    """
+        Sends a request to the OpenAI API and speaks out the response.
+
+        Args:
+            language: A string indicating the language of the chat message.
+            words: A string containing the chat message to be sent.
+
+        Returns:
+            None.
+
+        Raises:
+            openai.error.OpenAIError: If there is an error with the OpenAI API request.
+    """
+    
     openai.api_key = os.getenv("OPENAI_API_KEY")
     
     completion = openai.ChatCompletion.create(
