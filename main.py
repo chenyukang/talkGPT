@@ -46,13 +46,9 @@ def send_request(language: str, words: str) -> None:
     answer = completion.choices[0].message["content"]
     print(answer)
     
-    voice = ""
-    if language == "chinese":
-        voice = "--voice Tingting"
-    
     out = answer.replace('\n', " ")
-        
-    cmd_str = f"say {voice} \"{out}\""
+    cmd_str = f"say {'--voice Tingting' if language == 'chinese' else ''} \"{out}\""
+    
     subprocess.call(cmd_str, shell=True)
 
 
