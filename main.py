@@ -11,6 +11,20 @@ LANGUAGES = {
 }
 
 def transcribe_speech(language: str) -> str:
+    
+    """
+        Records audio from the microphone and transcribes it into text.
+
+        Args:
+            language: A string indicating the language of the speech to be transcribed.
+
+        Returns:
+            A string containing the transcribed text.
+
+        Raises:
+            sr.RequestError: If there is an error with the API request.
+            sr.UnknownValueError: If the speech could not be transcribed.
+    """
   
     print("\n\nListening...")
     
