@@ -1,4 +1,5 @@
 openai>=0.27.2
 pyaudio>=0.2.13
+soundfile>=0.12.1
 openai-whisper>=20230308
 SpeechRecognition>=3.10.0
